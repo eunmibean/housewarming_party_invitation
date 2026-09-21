@@ -12,6 +12,9 @@ js/dialog.js         # 타이핑 대화창, ▶ 메뉴, 방향키 이동, 8비�
 js/calendar-ui.js    # 달력
 js/gcal.js           # 구글 캘린더 링크 생성
 js/supabase-client.js
+js/env.js            # 배포 때 자동 생성 (환경 변수 → 브라우저용 값)
+scripts/generate-env.js
+vercel.json
 js/sprites.js        # 도트 그림 (스펙의 파일 구조에 추가된 파일)
 supabase/schema.sql
 ```
@@ -44,7 +47,18 @@ python3 -m http.server 8000
 → http://localhost:8000 (파일을 더블클릭으로 열어도 동작하지만, 폰트 로딩 등을 위해 서버 실행을 권장)
 
 ## 4. 배포 (Vercel / Netlify)
-빌드 설정이 필요 없습니다. 이 폴더 자체를 정적 사이트로 올리면 됩니다. (Netlify는 폴더 드래그&드롭, Vercel은 `vercel` 또는 Git 연동 후 Framework Preset을 *Other*, Build Command 비움, Output Directory `.`)
+Vercel은 `vercel.json`이 있어서 설정할 것이 환경 변수뿐입니다. **Project Settings → Environment Variables**에 아래 두 개를 추가하고 배포하세요.
+
+| 변수명 | 값 |
+|---|---|
+| `SUPABASE_URL` | Supabase Project URL |
+| `SUPABASE_ANON_KEY` | anon public 키 (`service_role` 키 금지, 넣으면 빌드가 실패합니다) |
+
+배포할 때 `scripts/generate-env.js`가 이 값을 `js/env.js`로 만들고, `config.js`가 그 값을 우선 사용합니다. 변수를 안 넣으면 `config.js`에 직접 적은 값을 씁니다. 환경 변수는 빌드 결과에 그대로 들어가므로 anon 키가 브라우저에 공개되는 것은 똑같습니다. (보호는 RLS가 담당)
+
+Netlify 등 다른 곳은 Build command에 `node scripts/generate-env.js`, Publish directory에 `.`을 넣으면 같은 방식으로 동작합니다.
+
+(환경 변수 없이 쓰려면) 빌드 설정이 필요 없습니다. 이 폴더 자체를 정적 사이트로 올리면 됩니다. (Netlify는 폴더 드래그&드롭, Vercel은 `vercel` 또는 Git 연동 후 Framework Preset을 *Other*, Build Command 비움, Output Directory `.`)
 
 ## 5. 개인 링크(?to=) 만들기
 `https://내도메인/?to=이름` 형식입니다. 이름칸이 자동으로 채워지고, DB의 `invited_as`에 원본 값이 함께 저장됩니다.

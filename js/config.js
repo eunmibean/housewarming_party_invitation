@@ -6,9 +6,10 @@ window.CONFIG = {
   /* ---- Supabase ------------------------------------------------------- */
   // Project Settings > API 에서 확인. anonKey 는 공개용(anon/public) 키만 넣으세요.
   // service_role 키는 절대 넣지 마세요!
+  // Vercel 환경 변수(SUPABASE_URL, SUPABASE_ANON_KEY)가 있으면 그 값이 우선, 없으면 아래 값을 사용합니다.
   supabase: {
-    url: 'https://YOUR-PROJECT.supabase.co',
-    anonKey: 'YOUR-ANON-PUBLIC-KEY',
+    url: (window.ENV && window.ENV.SUPABASE_URL) || '',
+    anonKey: (window.ENV && window.ENV.SUPABASE_ANON_KEY) || '',
     table: 'rsvps',
   },
 
