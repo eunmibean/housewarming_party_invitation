@@ -17,10 +17,10 @@ window.CONFIG = {
   event: {
     title: 'Housewarming Party',
     description: "Can't wait to see you at my new place!",
-    location: '123 Example-ro, Mapo-gu, Seoul (Apt 101)', // 캘린더/마무리 화면에 표시
-    mapUrl: 'https://maps.google.com/?q=Seoul+City+Hall', // 지도 링크 (비워두면 버튼 숨김)
+    location: '950 Drake St, Vancouver', // 캘린더/마무리 화면에 표시
+    mapUrl: 'https://maps.app.goo.gl/zzVRjyT5BMRru11EA', // 지도 링크 (비워두면 버튼 숨김)
     durationHours: 3, // 캘린더 종료 시각 = 시작 + durationHours
-    timezone: 'Asia/Seoul', // IANA 타임존
+    timezone: 'America/Vancouver', // IANA 타임존
   },
 
   /* ---- 선택 가능한 날짜 / 시간 ---------------------------------------- */
