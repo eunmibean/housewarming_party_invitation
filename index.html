@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- maximum-scale=1: iOS 가 8px 입력칸에 포커스할 때 화면을 확대하는 것을 막기 위함 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#2a2218">
+  <title>You're Invited</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <button id="sound-toggle" type="button" aria-pressed="false">SOUND: OFF</button>
+
+  <main id="stage">
+    <div id="screen" aria-live="polite">
+
+      <!-- 1. 우편함 (배경은 항상 깔려 있음) -->
+      <div id="scene-mailbox" class="scene">
+        <canvas id="bg" width="160" height="144"></canvas>
+        <div id="mailbox" aria-hidden="true">
+          <div id="mb-sway"><canvas id="mb-body" width="48" height="56"></canvas></div>
+          <canvas id="mb-flag" width="12" height="20"></canvas>
+        </div>
+        <canvas id="envelope" width="32" height="22" hidden aria-hidden="true"></canvas>
+      </div>
+
+      <!-- 2. 편지 -->
+      <section id="scene-letter" class="scene" hidden>
+        <div class="paper letter"><p id="letter-text"></p></div>
+      </section>
+
+      <!-- 3. 달력 -->
+      <section id="scene-calendar" class="scene" hidden>
+        <div class="paper" id="calendar-paper"></div>
+      </section>
+
+      <!-- 4. 폼 -->
+      <section id="scene-form" class="scene" hidden>
+        <div class="paper paper-scroll ruled" id="form-paper"></div>
+      </section>
+
+      <!-- 5. 마무리 카드 -->
+      <section id="scene-end" class="scene" hidden>
+        <div class="paper paper-scroll" id="end-paper"></div>
+      </section>
+
+      <!-- 대화창 + 선택지 메뉴 -->
+      <div id="dialog" hidden><p id="dialog-text"></p><i id="dialog-arrow" class="tri tri-d" hidden></i></div>
+      <div id="menu" role="menu" hidden></div>
+    </div>
+  </main>
+
+  <noscript><p class="noscript">Please enable JavaScript to open your invitation.</p></noscript>
+
+  <script src="js/config.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/dialog.js"></script>
+  <script src="js/calendar-ui.js"></script>
+  <script src="js/gcal.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
