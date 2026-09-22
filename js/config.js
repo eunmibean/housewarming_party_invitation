@@ -25,8 +25,8 @@ window.CONFIG = {
 
   /* ---- 선택 가능한 날짜 / 시간 ---------------------------------------- */
   availableDates: [
-    '2026-10-10', '2026-10-11', '2026-10-17', '2026-10-18',
-    '2026-10-24', '2026-10-25', '2026-11-07', '2026-11-08',
+    '2026-10-04', '2026-10-18', '2026-10-25', '2026-11-01',
+    '2026-11-08'
   ],
   availableTimes: ['13:00', '17:00'],
 
@@ -34,7 +34,7 @@ window.CONFIG = {
   notices: [
     'No parking available',
     'Please take off your shoes',
-    'Feel free to bring nothing but yourself!',
+    'Feel free to bring nothing (or drinks) but yourself!',
   ],
 
   /* ---- 음식 선택지 ---------------------------------------------------- */
